@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e7">
+  <title>Little Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="topline">
+      <a class="wordmark" href="#home" aria-label="Little Calculator home">lil' calc<span>!</span></a>
+      <p class="top-note">numbers, but make them easy</p>
+    </header>
+
+    <section class="workspace" id="home" aria-label="Calculator">
+      <div class="calculator">
+        <header class="calc-header">
+          <div class="calc-heading">
+            <span class="eyebrow" id="modeLabel">THE EVERYDAY ONE</span>
+            <h1 id="modeTitle">Calculator</h1>
+          </div>
+          <div class="menu-wrap">
+            <button class="menu-button" id="menuButton" type="button" aria-label="Open calculator options" aria-haspopup="true" aria-expanded="false" title="Calculator options">
+              <span></span><span></span><span></span>
+            </button>
+            <nav class="mode-menu" id="modeMenu" aria-label="Calculator modes" hidden>
+              <button type="button" data-mode="basic">Everyday calculator</button>
+              <button type="button" data-mode="units">Unit conversion</button>
+              <button type="button" data-mode="currency">Currency conversion</button>
+            </nav>
+          </div>
+        </header>
+
+        <section class="mode-panel" id="basicPanel" aria-label="Basic calculator">
+          <div class="display" aria-live="polite" aria-atomic="true">
+            <div class="expression" id="expression">&nbsp;</div>
+            <output class="screen-value" id="screenValue">0</output>
+          </div>
+          <div class="keypad" id="keypad">
+            <button class="key key-soft" type="button" data-action="clear">AC</button>
+            <button class="key key-soft" type="button" data-action="sign">+/-</button>
+            <button class="key key-soft" type="button" data-action="percent">%</button>
+            <button class="key key-op" type="button" data-operator="/" aria-label="Divide">÷</button>
+            <button class="key" type="button" data-digit="7">7</button>
+            <button class="key" type="button" data-digit="8">8</button>
+            <button class="key" type="button" data-digit="9">9</button>
+            <button class="key key-op" type="button" data-operator="*" aria-label="Multiply">×</button>
+            <button class="key" type="button" data-digit="4">4</button>
+            <button class="key" type="button" data-digit="5">5</button>
+            <button class="key" type="button" data-digit="6">6</button>
+            <button class="key key-op" type="button" data-operator="-" aria-label="Subtract">−</button>
+            <button class="key" type="button" data-digit="1">1</button>
+            <button class="key" type="button" data-digit="2">2</button>
+            <button class="key" type="button" data-digit="3">3</button>
+            <button class="key key-op" type="button" data-operator="+" aria-label="Add">+</button>
+            <button class="key key-zero" type="button" data-digit="0">0</button>
+            <button class="key" type="button" data-action="decimal">.</button>
+            <button class="key key-equals" type="button" data-action="equals" aria-label="Equals">=</button>
+          </div>
+        </section>
+
+        <section class="mode-panel converter-panel" id="unitsPanel" aria-label="Unit converter" hidden>
+          <label class="field-label" for="unitCategory">What are we converting?</label>
+          <select class="select-control" id="unitCategory">
+            <option value="length">Length</option>
+            <option value="weight">Weight</option>
+            <option value="temperature">Temperature</option>
+          </select>
+          <div class="conversion-row">
+            <label class="conversion-field">
+              <span>From</span>
+              <input class="text-control" id="unitAmount" type="number" value="1" inputmode="decimal">
+              <select class="select-control" id="unitFrom" aria-label="Convert from"></select>
+            </label>
+            <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units" title="Swap units">⇄</button>
+            <label class="conversion-field">
+              <span>To</span>
+              <output class="result-box" id="unitResult">0.3048</output>
+              <select class="select-control" id="unitTo" aria-label="Convert to"></select>
+            </label>
+          </div>
+          <p class="conversion-caption" id="unitCaption" aria-live="polite"></p>
+        </section>
+
+        <section class="mode-panel converter-panel" id="currencyPanel" aria-label="Currency converter" hidden>
+          <label class="field-label" for="currencyAmount">A little money math</label>
+          <input class="text-control amount-control" id="currencyAmount" type="number" value="1" min="0" step="any" inputmode="decimal">
+          <div class="conversion-row currency-row">
+            <label class="conversion-field">
+              <span>From</span>
+              <select class="select-control" id="currencyFrom" aria-label="Convert from currency"></select>
+            </label>
+            <button class="swap-button" id="swapCurrency" type="button" aria-label="Swap currencies" title="Swap currencies">⇄</button>
+            <label class="conversion-field">
+              <span>To</span>
+              <select class="select-control" id="currencyTo" aria-label="Convert to currency"></select>
+            </label>
+          </div>
+          <output class="currency-result" id="currencyResult" aria-live="polite">Loading rates…</output>
+          <p class="conversion-caption" id="currencyCaption" aria-live="polite">Rates provided by Frankfurter. Internet connection required.</p>
+        </section>
+
+        <footer class="calc-footer"><span class="footer-star">✳</span><span id="footerText">a tiny tool for big brain moments</span></footer>
+      </div>
+      <p class="page-note">Made for curious people and their calculations.</p>
+    </section>
+  </main>
+</body>
+</html>
